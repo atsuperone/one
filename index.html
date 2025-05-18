@@ -1,4 +1,4 @@
-                    
+                  
    <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +8,7 @@
     <meta name="theme-color" content="#008000">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>SUPER ONE </title>
+    <title>SUPER ONE</title>
   <link rel="icon" href="https://raw.githubusercontent.com/atsuperone/one/refs/heads/main/one.png" type="png/x-icon"> 
     <style>
         body {
@@ -19,7 +19,7 @@
     align-items: center;
     /* Changed from height: 100vh to min-height */
     min-height: 100vh;
-    background-color: white;
+    background-color: #f4f4f4;
     /* Changed from overflow: hidden */
     overflow-x: hidden;
     overflow-y: auto; /* Allow vertical scrolling */
@@ -64,7 +64,7 @@
     max-width: 500px;
     box-sizing: border-box;
     box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.5),
-                5px -5px 15px rgba(50, 255, 50, 0.2);
+                5px -5px 15px silver;
     margin: 3px 0; /* Add vertical spacing */
 }
 
@@ -486,7 +486,7 @@
         .note {
             position: absolute;
             font-size: 1.5em;
-            color: black; /* Black musical note color */
+            color: black; 
             opacity: 0;
             animation: floatUp 10s ease-out forwards;
         }
@@ -497,7 +497,7 @@
 }
 
 
-    /* Add these styles to your existing CSS */
+  
 #switch {
     position: relative;
     z-index: 2;
@@ -607,7 +607,7 @@
     background: linear-gradient(45deg, #ff0000, #ff6b6b);
     -webkit-background-clip: text;
     background-clip: text;
-    color: orange;
+    color: ORANGE;
     letter-spacing: -2px;
     z-index: 1000; 
     padding: 0;
@@ -620,19 +620,19 @@
 }
 
 .logo::after {
-    content: 'ONE';
+    content: 'ONE' ;
     font-family: 'Arial Unicode MS', 'Nirmala UI', sans-serif;
-    font-size: 0.6em;
+    font-size: 0.4em;
     background: linear-gradient(45deg, #333, #666);
     -webkit-background-clip: text;
     background-clip: text;
-    color: transparent;
+    color: BLACK;
     position: absolute;
     right: -0.2em;
     bottom: -0.6em;
     text-transform: none;
     letter-spacing: 0;
-    text-shadow: 1px 1px 2px rgba(0,0,0,.5);
+    text-shadow: 1px 1px 2px LIME;
     
 }
     
@@ -906,8 +906,7 @@
     transform: translateX(2px) scale(0.98);
     transition: all 0.2s ease;
 }
-
-
+    
 #redBeatsLink {
   position: relative;
   cursor: pointer;
@@ -1118,7 +1117,7 @@ body {
 </div>
     
     <!-- GOLD (no verification) -->
-    <div class="link-item" data-url="https://atsupergold.github.io/old/">GOLD (Will be operational very soon)</div>
+    <div class="link-item" data-url="https://atsuperman.github.io/isai/">இசை</div>
 </div>
 
   <div class="c-container" id="c-container" style="display: none;">
@@ -2078,8 +2077,8 @@ verifyInput.addEventListener('keypress', (e) => {
 });
 
 
-// GOLD Link (unchanged)
-document.querySelector('.link-item[data-url=""]').addEventListener('click', function(e) {
+// இசை Link (direct access - unchanged)
+document.querySelector('.link-item[data-url="https://atsuperman.github.io/isai/"]').addEventListener('click', function(e) {
     e.preventDefault();
     window.open(this.dataset.url, '_blank', 'noopener,noreferrer');
 });
