@@ -1,4 +1,4 @@
-                   
+                    
    <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -202,35 +202,22 @@
     100% { box-shadow: 0 0 0 0 rgba(0, 255, 0, 0); }
 }
     
-/* Each search result fits perfectly inside #c-container */
+/* Replace the existing flip animation CSS with this */
 .search-result-item {
     position: relative;
-    width: 100%; /* Ensures full width inside #c-container */
-    height: 45px;
-    perspective: 1000px;
+    width: 100%;
+    height: 60px;
+    overflow: hidden;
     cursor: pointer;
-    display: flex;
-    align-items: left;
-    justify-content: flex-start; /* Align text to the left */
-    margin-bottom: 4px; /* Space between results */
+    margin-bottom: 1px;
 }
 
-/* Flip container inside each result */
-.search-result-item .flip-container {
-    position: relative;
-    width: 90%;
-    height: 100%;
-    transition: transform 1.4s ease-in-out;
-    transform-style: preserve-3d;
-}
-
-/* Front and back sides */
 .search-result-item .front,
 .search-result-item .back {
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -239,29 +226,34 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Front (default view) */
 .search-result-item .front {
     background: #d9d9d9;
     color: black;
-    overflow: hidden;
+    transform: translateY(0);
+    opacity: 1;
 }
 
-/* Back (flip effect) */
 .search-result-item .back {
     background: #28a745;
     color: white;
     font-weight: bold;
-    transform: rotateY(180deg);
+    transform: translateY(100%);
+    opacity: 0;
     display: flex;
     align-items: center;
 }
 
-/* Flip effect when clicked */
-.search-result-item.flipped .flip-container {
-    transform: rotateY(180deg);
+/* New animation effect */
+.search-result-item.added .front {
+    transform: translateY(-100%);
+    opacity: 0;
 }
 
-/* Song title (single line with ellipsis) */
+.search-result-item.added .back {
+    transform: translateY(0);
+    opacity: 1;
+}
+
 .song-title {
     font-weight: bold;
     white-space: nowrap;
@@ -270,7 +262,6 @@
     text-align: left;
 }
 
-/* Song details (single line with ellipsis) */
 .song-details {
     font-size: 12px;
     color: #555;
@@ -1880,18 +1871,19 @@ document.getElementById('searchBox').addEventListener('input', (e) => {
             flipContainer.appendChild(back);
             listItem.appendChild(flipContainer);
 
-            listItem.onclick = () => {
-                let selectedSong = { ...song };
+                        // Update the search result click handler in the JavaScript
+listItem.onclick = () => {
+    let selectedSong = { ...song };
+    playlist.unshift(selectedSong);
+    updatePlaylist();
 
-                playlist.unshift(selectedSong);
-                updatePlaylist();
+    // Replace flip animation with new effect
+    listItem.classList.add('added');
 
-                listItem.classList.add('flipped');
-
-                setTimeout(() => {
-                    listItem.remove();
-                }, 4000);
-            };
+    setTimeout(() => {
+        listItem.remove();
+    }, 1000);
+};
 
             resultsContainer.appendChild(listItem);
         });
